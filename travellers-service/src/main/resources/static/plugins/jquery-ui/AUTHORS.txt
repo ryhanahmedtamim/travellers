@@ -231,7 +231,7 @@ Fabrício Matté <ult_combo@hotmail.com>
 Viktor Kojouharov <vkojouharov@gmail.com>
 Pawel Maruszczyk (http://hrabstwo.net)
 Pavel Selitskas <p.selitskas@gmail.com>
-Bjørn Johansen <post@bjornjohansen.no>
+Bjørn Johansen <status@bjornjohansen.no>
 Matthieu Penant <thieum22@hotmail.com>
 Dominic Barnes <dominic@dbarnes.info>
 David Sullivan <david.sullivan@gmail.com>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+    <!-- Navbar -->
+    <!--    <nav th:insert="layout :: navbar"></nav>-->
+    <div th:replace="layout :: navbar"></div>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div layout:fragment="header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Reporting</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Reporting</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <div layout:fragment="content">
+            <div class="container">
+                <div class="card card-default">
+                    <div class="card-header">
+                        <h3 class="card-title">Generate KYC Reports</h3>
+
+                    </div>
+                    <!-- /.card-header -->
+                    <form th:action="@{/post-a-status}" th:object="${status}" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Status:</label>
+                                        <div class="input-group date" id="message" data-target-input="nearest">
+                                            <textarea type="text" class="form-control text-area"
+                                                   data-target="#fromDate" th:field="*{message}" th:required="required"/>
+                                        </div>
+                                    </div>
+
+<!--                                    <div class="form-group">-->
+
+
+<!--                                            <input type="text" class="form-control"-->
+<!--                                                      data-target="" th:field="*{createdBy}" th:required="required", th:value="${}"/>-->
+
+<!--                                    </div>-->
+
+                                    <div class="form-group">
+                                        <label>Privacy</label>
+                                        <div class="col-sm-6">
+                                            <!-- radio -->
+                                            <div class="form-group" >
+                                                <div class="form-check" >
+                                                    <input class="form-check-input" type="radio" name="radio1" th:field="*{privacy}" th:value="1">
+                                                    <label class="form-check-label">Public</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="radio1" th:field="*{privacy}" checked="" th:value="0">
+                                                    <label class="form-check-label"> Private</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Location</label>
+                                        <select class="form-control" style="width: 100%;" id="status" th:field="*{location}" th:required="required">
+                                            <option th:each="location : ${locations}" th:value="${location.getLocationName()}" th:text="${location.getLocationName()}" />
+                                        </select>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+
+
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Post</button>
+                        </div>
+                    </form>
+                    <!-- /.card-body -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,8 +1,10 @@
-package com.ryhanahmedtamim.travellersservice.service;
+package com.ryhanahmedtamim.travellersservice.service.impl;
 
 import com.ryhanahmedtamim.travellersservice.entity.UserEntity;
 import com.ryhanahmedtamim.travellersservice.model.User;
 import com.ryhanahmedtamim.travellersservice.repository.UserRepository;
+import com.ryhanahmedtamim.travellersservice.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,9 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.xml.ws.Action;
 
+@Slf4j
 @Transactional
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;

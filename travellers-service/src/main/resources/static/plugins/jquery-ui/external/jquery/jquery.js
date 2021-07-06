@@ -1277,7 +1277,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
 			}
 
-			// Opera 10-11 does not throw on post-comma invalid pseudos
+			// Opera 10-11 does not throw on status-comma invalid pseudos
 			div.querySelectorAll("*,:x");
 			rbuggyQSA.push(",.*:");
 		});
@@ -9876,7 +9876,7 @@ jQuery.extend( {
 	}
 } );
 
-jQuery.each( [ "get", "post" ], function( i, method ) {
+jQuery.each( [ "get", "status" ], function( i, method ) {
 	jQuery[ method ] = function( url, data, callback, type ) {
 
 		// shift arguments if data argument was omitted
@@ -10162,7 +10162,7 @@ jQuery.ajaxSettings.xhr = window.ActiveXObject !== undefined ?
 		// and http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9
 		// Although this check for six methods instead of eight
 		// since IE also does not support "trace" and "connect"
-		return /^(get|post|head|put|delete|options)$/i.test( this.type ) &&
+		return /^(get|status|head|put|delete|options)$/i.test( this.type ) &&
 			createStandardXHR() || createActiveXHR();
 	} :
 

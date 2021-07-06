@@ -38,11 +38,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a th:href="@{/my-post}" class="nav-link">My Status</a>
+                        <a th:href="@{/my-status}" class="nav-link">My Status</a>
                     </li>
 
                     <li class="nav-item">
-                        <a th:href="@{/post-status}" class="nav-link">Post A Status</a>
+                        <a th:href="@{/post-a-status}" class="nav-link">Post A Status</a>
                     </li>
 
                 </ul>
@@ -62,7 +62,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                 <li class="nav-item">
-                    <form th:action="@{/logout}" method="post">
+                <p>
+                    Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                </p>
+                </li>
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="status">
                         <input class="form-control form-control-navbar" type="submit" value="Log Out"/>
                     </form>
                 </li>
