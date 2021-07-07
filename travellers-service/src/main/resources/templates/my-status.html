@@ -2,13 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
 <head>
-    <title>Dashboard</title>
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <script th:inline="javascript">
-        var chartData = [[${chartData}]]
-        // console.log(chartData);
-        // console.log(chartData[0].success);
+    <title>My Status</title>
 
     </script>
 </head>
@@ -26,7 +20,7 @@
             <div class="container">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Dashboard</h1>
+                        <h1 class="m-0 text-dark">My Status</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -52,7 +46,7 @@
                                 <span class="info-box-number small"  th:if="${data.privacy == 1}">Public</span>
                                 <span class="info-box-number small"  th:if="${data.privacy == 0}">Private</span>
                                 <div>
-                                    <button type="button" class="btn btn-info"
+                                    <button type="button" class="btn btn-info" id="modal-button"
                                             data-toggle="modal" data-target="#modal-xl"
                                             th:data-id="${data.getId()}"
                                             th:data-privacy="${data.getPrivacy()}"
@@ -158,10 +152,6 @@
 
 
         <div th:replace="layout :: footer"></div>
-        <!--    <script>-->
-        <!--        var data = $("#modelAttr").val();-->
-        <!--        var success = data[0].charAt(0);-->
-        <!--    </script>-->
     </div>
 </div>
 </body>

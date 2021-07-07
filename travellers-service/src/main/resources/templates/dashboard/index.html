@@ -2,15 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
 <head>
-    <title>Dashboard</title>
+    <title>Home</title>
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <script th:inline="javascript">
-        var chartData = [[${chartData}]]
-        // console.log(chartData);
-        // console.log(chartData[0].success);
 
-    </script>
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
@@ -26,7 +21,7 @@
             <div class="container">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Dashboard</h1>
+                        <h1 class="m-0 text-dark">Newsfeeds</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
