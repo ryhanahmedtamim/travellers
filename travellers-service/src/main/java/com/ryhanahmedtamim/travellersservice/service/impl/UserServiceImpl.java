@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
         if(emailExists(user.getEmail()))
         {
+            log.error("This email already exist");
             return "This email already exist";
         }
 
@@ -36,7 +37,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepository.saveAndFlush(userEntity);
-
+        log.info("Successfully Register user");
         return "Successfully Register user";
     }
 

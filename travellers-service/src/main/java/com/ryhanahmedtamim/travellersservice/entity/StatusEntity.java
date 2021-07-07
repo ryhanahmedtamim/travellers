@@ -25,7 +25,7 @@ public class StatusEntity {
     private Integer privacy;
 
     @Column(name = "location")
-    private String Location;
+    private String location;
 
     @Column(name = "created_data")
     private Date createdDate;

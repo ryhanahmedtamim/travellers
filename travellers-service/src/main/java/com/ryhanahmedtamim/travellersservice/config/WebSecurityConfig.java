@@ -21,22 +21,6 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${user-admin}")
-    private String adminUsername;
-    @Value("${password-admin}")
-    private String adminPassword;
-
-    @Value("${role-admin}")
-    private String adminRole;
-
-    @Value("${user-test}")
-    private String testUserUsername;
-    @Value("${password-test-user}")
-    private String testUserPassword;
-
-    @Value("${role-usr}")
-    private String testUserRole;
-
     @Autowired
     DataSource dataSource;
 
