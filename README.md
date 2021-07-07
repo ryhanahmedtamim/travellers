@@ -9,3 +9,8 @@ To run this application:
 		spring.datasource.password=
 	
 	Open the project in a IDE. Then run.
+	
+	Application address : localhost:9090
+	
+	
+	At first you need to register a user. Then you can do all the operations. 
