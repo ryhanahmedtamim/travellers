@@ -24,7 +24,7 @@ public class LocationServiceImpl implements LocationService {
 
         List<Location> locations = new ArrayList<>();
 
-        if(locationEntities == null){
+        if(locationEntities.size() == 0){
             locationEntities = new ArrayList<LocationEntity>();
 
             LocationEntity locationKhulna= new LocationEntity();
