@@ -4,6 +4,8 @@ import com.ryhanahmedtamim.travellersservice.model.Location;
 import com.ryhanahmedtamim.travellersservice.model.Status;
 import com.ryhanahmedtamim.travellersservice.service.LocationService;
 import com.ryhanahmedtamim.travellersservice.service.StatusPosterService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 public class StatusPosterController {
 
@@ -20,6 +23,7 @@ public class StatusPosterController {
 
     @Autowired
     StatusPosterService statusPosterService;
+
 
     @GetMapping("post-a-status")
     public String getPostForm(Model model){
@@ -34,5 +38,23 @@ public class StatusPosterController {
     public String postStatus( Model model, Status status){
         String flag = statusPosterService.postStatus(status);
         return "redirect:/";
+    }
+
+    @GetMapping("my-status")
+    public String getAllMyPost(Model model){
+        List<Status> statusList = statusPosterService.getAllStatusByUserId();
+        model.addAttribute("statusList",statusList);
+        List<Location> locations = locationService.getAllLocations();
+        Status status = new Status();
+        model.addAttribute("status", status);
+        model.addAttribute("locations", locations);
+        return "my-status";
+    }
+
+    @PostMapping("update-a-status")
+    public String updateMyPost(Model model, Status status){
+        String flag = statusPosterService.editStatus(status);
+        log.debug(flag);
+        return "redirect:/my-status";
     }
 }

@@ -7,6 +7,6 @@ import java.util.List;
 public interface StatusPosterService {
     public String postStatus(Status status);
     public List<Status> getAllPublicStatus();
-    public List<Status> getAllStatusByUserId(Integer id);
+    public List<Status> getAllStatusByUserId();
     public String editStatus(Status status);
 }

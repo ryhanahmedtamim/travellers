@@ -38,6 +38,29 @@
             </div><!-- /.container-fluid -->
         </div>
 
+        <div layout:fragment="content">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 col-sm-6 col-md-12" th:each="data : ${statusList}">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-sign-in-alt"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-number small" th:text="${data.createdBy}"></span>
+                                <span class="info-box-text"  th:text="${data.message}"></span>
+                                <span class="info-box-text small"  th:text="${data.location}"></span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
 
     <div th:replace="layout :: footer"></div>
 <!--    <script>-->

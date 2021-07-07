@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+<head>
+    <title>Dashboard</title>
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <script th:inline="javascript">
+        var chartData = [[${chartData}]]
+        // console.log(chartData);
+        // console.log(chartData[0].success);
+
+    </script>
+</head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+    <!-- Navbar -->
+    <!--    <nav th:insert="layout :: navbar"></nav>-->
+    <div th:replace="layout :: navbar"></div>
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div layout:fragment="header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">My Status</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <div layout:fragment="content">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 col-sm-6 col-md-12" th:each="data : ${statusList}">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-sign-in-alt"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text"  th:text="${data.message}"></span>
+                                <span class="info-box-text small"  th:text="${data.location}"></span>
+                                <span class="info-box-number small"  th:if="${data.privacy == 1}">Public</span>
+                                <span class="info-box-number small"  th:if="${data.privacy == 0}">Private</span>
+                                <div>
+                                    <button type="button" class="btn btn-info"
+                                            data-toggle="modal" data-target="#modal-xl"
+                                            th:data-id="${data.getId()}"
+                                            th:data-privacy="${data.getPrivacy()}"
+                                            th:data-message="${data.getMessage()}"
+                                            th:data-location="${data.getLocation()}"
+                                            >
+                                        <i class="fas fa-info-circle"></i> Edit
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+
+                    <div class="modal fade" id="modal-xl">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title"> Deno Details</h4>
+
+                                    <div>
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-body">
+                                    <form th:action="@{/update-a-status}" th:object="${status}" method="post">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group date" id="id" data-target-input="nearest">
+                                                             <input type="hidden" class="form-control text-area" name="id"
+                                                                       th:field="*{id}" th:required="required" readonly/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Status:</label>
+                                                        <div class="input-group date" id="message" data-target-input="nearest">
+                                                             <textarea type="text" class="form-control text-area"
+                                                      th:field="*{message}" th:required="required"/>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label>Privacy</label>
+                                                        <div class="col-sm-6">
+                                                            <!-- radio -->
+                                                            <div class="form-group" >
+                                                                <div class="form-check" >
+                                                                    <input class="form-check-input" type="radio" name="radio" id="radio1" th:field="*{privacy}" th:value="1">
+                                                                    <label class="form-check-label">Public</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" name="radio" id="radio2" th:field="*{privacy}" checked="" th:value="0">
+                                                                    <label class="form-check-label"> Private</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!-- /.form-group -->
+                                                    <div class="form-group">
+                                                        <label>Location</label>
+                                                        <select class="form-control" style="width: 100%;" name="location" id="location" th:field="*{location}" th:required="required">
+                                                            <option th:each="location : ${locations}" th:value="${location.getLocationName()}" th:text="${location.getLocationName()}" />
+                                                        </select>
+                                                    </div>
+                                                    <!-- /.form-group -->
+                                                </div>
+                                                <!-- /.col -->
+
+
+                                                <!-- /.col -->
+                                            </div>
+                                            <!-- /.row -->
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div th:replace="layout :: footer"></div>
+        <!--    <script>-->
+        <!--        var data = $("#modelAttr").val();-->
+        <!--        var success = data[0].charAt(0);-->
+        <!--    </script>-->
+    </div>
+</div>
+</body>
+</html>

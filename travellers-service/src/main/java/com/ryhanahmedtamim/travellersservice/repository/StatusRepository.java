@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface StatusRepository extends JpaRepository<StatusEntity, Integer> {
-    List<StatusEntity> findAllByPrivacy(Integer privacy);
-    List<StatusEntity> findAllByCreatedUserIdOrderByUpdatedDate(Integer id);
+    List<StatusEntity> findAllByPrivacyOrderByUpdatedDateDesc(Integer privacy);
+    List<StatusEntity> findAllByCreatedUserIdOrderByUpdatedDateDesc(Integer id);
+    StatusEntity findByIdAndAndCreatedUserId(Integer id, Integer creatorUserId);
 }

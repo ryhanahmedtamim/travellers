@@ -248,60 +248,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $('#modal-xl').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var id = button.data('id')
-            var campaignId = button.data('campaignid')
-            var agentCommission = button.data('agent_commission')
-            var distributorCommission = button.data('distributor_commission')
-            var dsrCommission = button.data('dsr_commission')
-            var createdDate = button.data('created_date')
-            var updatedDate = button.data('updated_date')
-            var deactivateDate = button.data('deactivate_date')
-            var status = button.data('status')
+            var privacy = button.data('privacy')
+            var message = button.data('message')
+            var location = button.data('location')
+
+
 
             var modal = $(this)
-            if (status == 'ACTIVE') {
-                $("#status").removeClass("badge badge-pill badge-danger").addClass("badge badge-pill badge-success");
-                modal.find('.modal-header #status').text('ACTIVE').herf = "/deno-commission-deactivete?id"+id;
-                $("#updateButton").show();
 
-            } else {
-                $("#status").removeClass("badge badge-pill badge-success").addClass("badge badge-pill badge-danger");
-                modal.find('.modal-header #status').text('INACTIVE');
-                $("#updateButton").hide();
+            let radiobtn = document.getElementById("radio1");
+            radiobtn.checked = true;
+
+            if(privacy == 1){
+                let radiobtn = document.getElementById("radio1");
+                radiobtn.checked = true;
+            }
+            else {
+                let radiobtn = document.getElementById("radio2");
+                radiobtn.checked = true;
             }
 
             modal.find('.modal-body #id').val(id)
-            modal.find('.modal-body #campaignId').val(campaignId)
-            modal.find('.modal-body #distributorCommission').val(distributorCommission)
-            modal.find('.modal-body #agentCommission').val(agentCommission)
-            modal.find('.modal-body #dsrCommission').val(dsrCommission)
-            modal.find('.modal-body #createdDate').val(createdDate)
-            modal.find('.modal-body #updatedDate').val(updatedDate)
-            modal.find('.modal-body #deactivateDate').val(deactivateDate)
-        })
+            modal.find('.modal-body #message').val(message)
+            modal.find('.modal-body #location').val(location)
 
-        // $('#modal-valid').on('show.bs.modal', function (event) {
-        //     var button = $(event.relatedTarget)
-        //     var vid = button.data('vid')
-        //     var vcampaignId = button.data('campaignId')
-        //     var vdistributorCommission = button.data('vdistributorCommission')
-        //     var vagentCommission = button.data('vagentCommission')
-        //     var vdsrCommission = button.data('dsrCommission')
-        //     var vcreatedDate = button.data('vcreatedDate')
-        //     var vupdatedDate = button.data('vupdatedDate')
-        //     var vdeactivateDate = button.data('vdeactivateDate')
-        //
-        //
-        //     var modal = $(this)
-        //
-        //     // modal.find('.modal-body #vId').val(vid)
-        //     // //modal.find('.modal-body #vCampaignId').val(vcampaignId)
-        //     // modal.find('.modal-body #vagentCommission').val(vagentCommission)
-        //     // modal.find('.modal-body #vdistributorCommission').val(vdistributorCommission)
-        //     // modal.find('.modal-body #vdsrCommission').val(vdsrCommission)
-        //     // modal.find('.modal-body #vcreatedDate').val(vcreatedDate)
-        //     // modal.find('.modal-body #vupdatedDate').val(vupdatedDate)
-        //     // modal.find('.modal-body #vdeactivateDate').val(vdeactivateDate)
-        // })
+        })
 
 
         var barChartData = {
