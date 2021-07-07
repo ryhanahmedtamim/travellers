@@ -72,6 +72,7 @@ public class StatusPosterServiceImpl implements StatusPosterService {
             status.setMessage(statusEntity.getMessage());
             Optional<UserEntity> userEntity = userRepository.findById(statusEntity.getCreatedUserId());
             status.setCreatedBy(userEntity.get().getName());
+            status.setUpdatedDate(statusEntity.getUpdatedDate());
             statusList.add(status);
         });
 
@@ -100,6 +101,7 @@ public class StatusPosterServiceImpl implements StatusPosterService {
             status.setPrivacy(statusEntity.getPrivacy());
             Optional<UserEntity> userEntity = userRepository.findById(statusEntity.getCreatedUserId());
             status.setCreatedBy(userEntity.get().getName());
+            status.setUpdatedDate(statusEntity.getUpdatedDate());
             statusList.add(status);
         });
         return statusList;

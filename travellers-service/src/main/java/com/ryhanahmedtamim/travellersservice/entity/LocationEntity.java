@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Table(name = "locations")
 @Data
 public class LocationEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

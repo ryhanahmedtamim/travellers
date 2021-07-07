@@ -2,6 +2,8 @@ package com.ryhanahmedtamim.travellersservice.model;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Status {
     private Integer id;
@@ -10,4 +12,5 @@ public class Status {
     private Integer privacy;
     private String location;
     private String createdBy;
+    private Date updatedDate;
 }

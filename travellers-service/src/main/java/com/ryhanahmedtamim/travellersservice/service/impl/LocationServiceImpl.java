@@ -4,12 +4,14 @@ import com.ryhanahmedtamim.travellersservice.entity.LocationEntity;
 import com.ryhanahmedtamim.travellersservice.model.Location;
 import com.ryhanahmedtamim.travellersservice.repository.LocationRepository;
 import com.ryhanahmedtamim.travellersservice.service.LocationService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class LocationServiceImpl implements LocationService {
 
@@ -22,12 +24,37 @@ public class LocationServiceImpl implements LocationService {
 
         List<Location> locations = new ArrayList<>();
 
-        for(LocationEntity locationEntity : locationEntities){
+        if(locationEntities == null){
+            locationEntities = new ArrayList<LocationEntity>();
+
+            LocationEntity locationKhulna= new LocationEntity();
+            locationKhulna.setLocationName("Khulna");
+            LocationEntity locationDhaka= new LocationEntity();
+            locationDhaka.setLocationName("Dhaka");
+            LocationEntity locationSyleth= new LocationEntity();
+            locationSyleth.setLocationName("Syleth");
+            LocationEntity locationGopalganj= new LocationEntity();
+            locationGopalganj.setLocationName("Gopalganj");
+
+            locationEntities.add(locationKhulna);
+            locationEntities.add(locationDhaka);
+            locationEntities.add(locationSyleth);
+            locationEntities.add(locationGopalganj);
+            try {
+                locationRepository.saveAll(locationEntities);
+            }
+            catch (Exception e) {
+                log.error("Data update failed");
+               log.error(e.getMessage());
+            }
+        }
+
+        locationEntities.stream().forEach(locationEntity->{
             Location location = new Location();
             location.setLocationName(locationEntity.getLocationName());
             location.setId(locationEntity.getId());
             locations.add(location);
-        }
+        });
         return locations;
     }
 }
