@@ -37,6 +37,10 @@ public class StatusPosterController {
     @PostMapping("post-a-status")
     public String postStatus( Model model, Status status){
         String flag = statusPosterService.postStatus(status);
+
+        if(status.getPrivacy() == 0){
+            return "redirect:/my-status";
+        }
         return "redirect:/";
     }
 
