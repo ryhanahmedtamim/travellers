@@ -23,11 +23,13 @@ import java.util.Optional;
 @Service
 public class StatusPosterServiceImpl implements StatusPosterService {
 
-    @Autowired
     StatusRepository statusRepository;
-
-    @Autowired
     UserRepository userRepository;
+
+    public StatusPosterServiceImpl(StatusRepository statusRepository, UserRepository userRepository){
+       this.statusRepository = statusRepository;
+       this.userRepository = userRepository;
+    }
 
     @Override
     public String postStatus(Status status) {

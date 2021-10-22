@@ -18,11 +18,13 @@ import java.util.List;
 @Controller
 public class StatusPosterController {
 
-    @Autowired
     LocationService locationService;
-
-    @Autowired
     StatusPosterService statusPosterService;
+
+    public StatusPosterController(LocationService locationService, StatusPosterService statusPosterService){
+        this.locationService = locationService;
+        this.statusPosterService = statusPosterService;
+    }
 
 
     @GetMapping("post-a-status")

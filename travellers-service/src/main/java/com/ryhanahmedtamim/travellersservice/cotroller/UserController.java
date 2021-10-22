@@ -14,8 +14,11 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    @Autowired
     UserService userService;
+
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
 
     @GetMapping("user-register-form")
     public String registerUserForm(Model model){

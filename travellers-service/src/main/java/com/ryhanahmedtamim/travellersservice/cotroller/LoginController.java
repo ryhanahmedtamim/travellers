@@ -14,13 +14,17 @@ import java.util.List;
 @Controller
 public class LoginController {
 
+    @Autowired
+    StatusPosterService statusPosterService;
+
+    public LoginController(StatusPosterService statusPosterService){
+        this.statusPosterService = statusPosterService;
+    }
+
     @GetMapping("/login")
     public String login() {
         return "/login";
     }
-
-    @Autowired
-    StatusPosterService statusPosterService;
 
     @GetMapping("/")
     public String index(Model model) {
